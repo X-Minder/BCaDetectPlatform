@@ -1,0 +1,9 @@
+gradio>=3.50
+torch
+torchvision
+timm
+segmentation-models-pytorch
+Pillow
+numpy
+opencv-python==4.9.0.80 
+tqdm
