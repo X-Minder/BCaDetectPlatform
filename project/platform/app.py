@@ -984,32 +984,37 @@ def switch_language(selected_lang):
     """扩展的语言切换函数，包含视频组件"""
     texts = language_texts[selected_lang]
     # 调用原有的switch_language函数获取基础更新
-    base_updates = switch_language(selected_lang)
     # 添加视频相关组件的更新
-    video_updates = [
+    # video_updates = [
+    #     gr.update(label=texts["video_upload_label"]),
+    #     gr.update(value=texts["video_process_button"]),
+    #     gr.update(label=texts["video_output_label"]),
+    #     gr.update(label=texts["video_stats_label"]),
+    #     gr.update(label=texts["video_skip_frames_label"],
+    #               info=texts["video_skip_frames_info"]),
+    # ]
+    return (
+        # 图像分析 Tab 的组件
+        gr.update(value=f"<h1 style='font-weight:bold; font-size:32px;'>{texts['title']}</h1>"),
+        gr.update(label=texts["upload_label"]),
+        gr.update(value=texts["predict_button"]),
+        gr.update(label=texts["result_label"]),
+        gr.update(label=texts["threshold_slider_label"]),
+        gr.update(value=texts["download_masks_button"]),
+        gr.update(value=texts["clear_button"]),
+        gr.update(label=texts["download_file_label"]),
+        gr.update(label=texts["error_box_label"]),
+        gr.update(label=texts["enable_classification_label"]),
+        gr.update(label=texts["enable_segmentation_label"]),
+        gr.update(label=texts["enable_grading_label"]),
+        # 视频分析 Tab 的组件
         gr.update(label=texts["video_upload_label"]),
         gr.update(value=texts["video_process_button"]),
         gr.update(label=texts["video_output_label"]),
         gr.update(label=texts["video_stats_label"]),
         gr.update(label=texts["video_skip_frames_label"],
                   info=texts["video_skip_frames_info"]),
-    ]
-
-    return (*base_updates, *video_updates)
-    # return (
-    #     gr.update(value=f"<h1 style='font-weight:bold; font-size:32px;'>{texts['title']}</h1>"),
-    #     gr.update(label=texts["upload_label"]),
-    #     gr.update(value=texts["predict_button"]),
-    #     gr.update(label=texts["result_label"]),
-    #     gr.update(label=texts["threshold_slider_label"]),
-    #     gr.update(value=texts["download_masks_button"]),
-    #     gr.update(value=texts["clear_button"]),
-    #     gr.update(label=texts["download_file_label"]),
-    #     gr.update(label=texts["error_box_label"]),
-    #     gr.update(label=texts["enable_classification_label"]),
-    #     gr.update(label=texts["enable_segmentation_label"]),
-    #     gr.update(label=texts["enable_grading_label"])
-    # )
+    )
 
 
 # --- Interface(扩展原有界面) ---
